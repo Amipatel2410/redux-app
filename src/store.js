@@ -1,10 +1,10 @@
 import {createStore} from 'redux';
-import reducer from './reducers';
+import reducers from './reducers';
 
 let initialState = {
     repos :[],
-    username : ''
+    username : 'Amisha'
 };
 
 
-export default createStore(reducers);
+export default createStore(reducers,initialState);

@@ -6,10 +6,10 @@ const reducer = function (store, action) {
     let newStore;
 
     switch (action.type) {
-        case CHANGE_USERNAME:
+        case actions.CHANGE_USERNAME:
             newStore = Object.assign({}, store, {username: action.data.value});
             break;
-        case FETCHED_REPOS:
+        case actions.FETCHED_REPOS:
             newStore = Object.assign({}, store, {repos: action.data.value});
             break;
         default: 
