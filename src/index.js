@@ -1,6 +1,7 @@
-/*import React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import {Provider} from 'react-dom';
+/*import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -18,53 +19,56 @@ const userData = {
 
 ReactDOM.render(<App user={userData}/>, document.getElementById('root'));
 registerServiceWorker(); */
-
+import store from './store';
+import actions from './actions/constants';
 
 let store = {
     repos: [],
     username: ""
 };
 
-const CHANGE_USERNAME =  'CHANGE_USERNAME';
-const FETCHED_REPOS =  'FETCHED_REPOS'
 
-const reducer = function (store, action) {
-    let newStore;
-
-    switch (action.type) {
-        case CHANGE_USERNAME:
-            newStore = Object.assign({}, store, {username: action.data.value});
-            break;
-        case FETCHED_REPOS:
-            newStore = Object.assign({}, store, {repos: action.data.value});
-            break;
-        default: 
-            newStore = store;
-    }
-
-    return newStore;
-}
 
 function changeUser(value) {
     return {
-        type: CHANGE_USERNAME,
+        type: actions.CHANGE_USERNAME,
         data: {
             value
         }
     } 
 }
+// this function kicked in whenever store is update , 
+store.subscribe(() => {
+    console.log(store.getState());
+})
 
-store = reducer(store, changeUser("o"));
+
+/* 
+const reducer = function (store, action) {
+   let newStore;
+   if(action.type === CHANGE_USERNAME){
+       newStore = Object.assign({}, store, {username: action.data.value});
+   } else {
+       newStore = store;
+   }
+
+   return newStore;
+}
+
+*/
+
+// dispatch method does work like reducer that we created before in this file
+store.dispatch(changeUser("o"));
 console.log(store);
 
-store = reducer(store, changeUser("oc"));
+store.dispatch(changeUser("oc"));
 console.log(store);
 
-store = reducer(store, changeUser("oct"));
+store.dispatch(changeUser("oct"));
 console.log(store);
 
 store = reducer(store, {
-    type: FETCHED_REPOS,
+    type: actions.FETCHED_REPOS,
     data: {
         value: [
             {
