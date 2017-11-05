@@ -1,46 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-dom';
-/*import './index.css';
+import store from './store';
+import actions from './actions/constants';
+import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 
 
-const userData = {
-    name: " Joe",
-    hobbies: [
-        "reading",
-        "computer games",
-        "driving"
-    ]
-};
 
 
-ReactDOM.render(<App user={userData}/>, document.getElementById('root'));
-registerServiceWorker(); */
-import store from './store';
-import actions from './actions/constants';
-
-let store = {
-    repos: [],
-    username: ""
-};
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root'));
+registerServiceWorker(); 
 
 
+store.subscribe(() => {
+    console.log(store.getState());
+});
 
-function changeUser(value) {
+
+/*function changeUser(value) {
     return {
         type: actions.CHANGE_USERNAME,
         data: {
             value
         }
     } 
-}
+} */
+
+
+
 // this function kicked in whenever store is update , 
-store.subscribe(() => {
-    console.log(store.getState());
-})
+
 
 
 /* 
