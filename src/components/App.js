@@ -15,7 +15,8 @@ class App extends Component {
             <h1> Welcome {this.props.username} </h1>
             <div>
                 <input 
-                    defaultValue={this.props.username} />
+                    defaultValue={this.props.username} 
+                    onChange = {(e) => {this.props.changeUserName(e.target.value)}}/>
             </div>
             </div>
         );
@@ -30,7 +31,9 @@ const mapStateToProps = function (state)  {
 
 const mapDispatchToProps = function (dispatch) {
     return {
-        changeUserName: dispatch(changeUserName)
+        //bindActionCreators is method that takes from onChange event with props.change(value) 
+        //and that value passed to the dispatch(changeUserName(value)) and call like this becuse it binds method to this bindActionCreators 
+        changeUserName: bindActionCreators(changeUserName, dispatch)
     }
 }
 
