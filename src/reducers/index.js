@@ -1,6 +1,7 @@
 
 
 import actions from '../actions/constants';
+
 const reducer = function (store, action) {
     let newStore;
 

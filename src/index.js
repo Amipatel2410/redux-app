@@ -8,9 +8,6 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 
-
-
-
 ReactDOM.render(
     <Provider store={store}>
         <App />
@@ -22,6 +19,12 @@ registerServiceWorker();
 store.subscribe(() => {
     console.log(store.getState());
 });
+
+
+
+
+
+
 
 
 /*function changeUser(value) {
@@ -53,6 +56,10 @@ const reducer = function (store, action) {
 
 */
 
+
+
+/*
+
 // dispatch method does work like reducer that we created before in this file
 store.dispatch(changeUser("o"));
 console.log(store);
@@ -77,3 +84,5 @@ store = reducer(store, {
 });
 
 console.log(store);
+
+*/
